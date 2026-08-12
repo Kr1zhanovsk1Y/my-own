@@ -1,0 +1,219 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-header {
+  width: 100%;
+  padding: 48px 20px 36px;
+  text-align: center;
+  position: relative;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+  opacity: 0.5;
+}
+
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 500px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glass-border),
+    transparent
+  );
+}
+
+.app-logo {
+  margin-bottom: 6px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 20px rgba(232, 168, 56, 0.3));
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+.app-logo svg {
+  display: block;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(232, 168, 56, 0.3)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 30px rgba(232, 168, 56, 0.45)); }
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.app-title-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #f0d060 50%, var(--accent) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShine 4s linear infinite;
+}
+
+@keyframes titleShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.app-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.app-search {
+  width: 100%;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.mode-switcher {
+  display: flex;
+  gap: 4px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  padding: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.mode-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all 0.35s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.mode-tab:hover {
+  color: var(--text-secondary);
+}
+
+.mode-tab:hover::before {
+  opacity: 0.5;
+}
+
+.mode-tab.active {
+  background: var(--bg-card);
+  color: var(--accent);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.mode-tab.active::before {
+  opacity: 1;
+}
+
+.mode-tab-icon {
+  display: flex;
+  align-items: center;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.mode-tab-icon svg {
+  display: block;
+}
+
+.mode-tab.active .mode-tab-icon {
+  transform: scale(1.15);
+}
+
+.app-results {
+  width: 100%;
+  padding: 8px 20px 80px;
+}
+
+.results-header {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.results-hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 32px 16px 28px;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+  }
+
+  .app-search {
+    padding: 20px 16px;
+  }
+
+  .app-results {
+    padding: 8px 12px 40px;
+  }
+
+  .mode-tab {
+    padding: 8px 18px;
+    font-size: 0.82rem;
+  }
+}

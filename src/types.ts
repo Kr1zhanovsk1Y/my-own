@@ -5,5 +5,8 @@ export interface Movie {
   rating: number;
   description: string;
   genres: string[];
-  posterUrl: string;
+  tags?: any[];
+  posterGradient?: any;
+  posterEmoji?: any;
+  posterUrl?: any;
 }

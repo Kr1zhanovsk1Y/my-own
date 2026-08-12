@@ -3,7 +3,7 @@ import { ChipInput } from './components/ChipInput';
 import { MovieSearch } from './components/MovieSearch';
 import { MovieGrid } from './components/MovieCard';
 import { LuckyPick } from './components/LuckyPick';
-import { IconSparkles, IconTarget, IconFilm, IconDice } from './components/Icons';
+import { IconSparkles, IconTarget, IconFilm } from './components/Icons';
 import {
   getGenres,
   discoverByKeywordsAndGenres,

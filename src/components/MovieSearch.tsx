@@ -24,7 +24,7 @@ export function MovieSearch({ selectedMovie, onSelect }: MovieSearchProps) {
   const [results, setResults] = useState<DropdownMovie[]>([]);
   const [searching, setSearching] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
